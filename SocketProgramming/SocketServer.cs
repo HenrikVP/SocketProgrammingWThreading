@@ -22,7 +22,7 @@ namespace SocketProgramming
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Listen for connection");
+                Console.WriteLine("Listen for connection on " +listener.LocalEndPoint);
                 Socket socket = listener.Accept();
                 byte[] buffer = new byte[4096];
                 string? data = null;

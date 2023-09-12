@@ -10,7 +10,11 @@ namespace SocketProgramming
             Thread serverThread = new Thread(ServerThread);
             serverThread.Start();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(1000);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Start client? (Y/N)");
+            while (Console.ReadKey().Key != ConsoleKey.Y) ;
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Starting Client");
             SocketClient client = new SocketClient();
