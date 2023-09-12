@@ -14,6 +14,8 @@ namespace SocketProgramming
             IPAddress iPAddress = Program.GetIPAddress(iPHost.AddressList);
             IPEndPoint iPEndPoint = new(iPAddress, 11111);
 
+            //We create a socket, that is used to connect to our server socket.
+            //TODO Input IP address of server manually.
             Socket sender = new Socket(iPAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             sender.Connect(iPEndPoint);
             Console.ForegroundColor = ConsoleColor.Green;
@@ -25,16 +27,13 @@ namespace SocketProgramming
             sender.Send(bytes);
 
             //Recieves answer from server
-            byte[] bytesRecieved = new byte[4048];
+            byte[] bytesRecieved = new byte[4042];
             sender.Receive(bytesRecieved);
 
             string messageReceived = Encoding.ASCII.GetString(bytesRecieved);
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(messageReceived);
-
         }
-
-
     }
 }
